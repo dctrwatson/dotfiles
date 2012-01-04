@@ -1,0 +1,10 @@
+Host *
+    Compression yes
+    CompressionLevel 7
+    Cipher blowfish
+    ForwardAgent yes
+    ServerAliveInterval 60
+    TCPKeepAlive yes
+    ControlMaster auto
+    ControlPath /tmp/ssh-%r@%h:%p
+

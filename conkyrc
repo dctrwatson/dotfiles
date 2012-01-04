@@ -1,0 +1,7 @@
+out_to_x no
+out_to_console yes
+update_interval 1
+total_run_times 0
+use_spacer none
+TEXT
+${time %a %b %d, %Y %T} |Up:${uptime_short} |Avg: $loadavg |IP:${addr re0} |RAM:$memperc% |CPU:${cpu}% | ${downspeedf re0}/${upspeedf re0} 
