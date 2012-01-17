@@ -1,21 +1,16 @@
-Xft.dpi:                    96
-Xft.antialias:           true
-Xft.hinting:              full
-Xft.hintstyle:           hintslight
-Xft.rgba:                  rgb
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+Xft.rgba:       rgb
 
 URxvt*perl-ext-common:  default,matcher
 URxvt*urlLauncher:      /usr/local/bin/chrome
 URxvt*matcher.button:   1 
 
-## borderless and no scrollbar
-URxvt*scrollBar_right: false
 URxvt*scrollBar: false
-!URxvt*borderLess: true
-
-URxvt*inheritPixmap: false
-URxvt*tintColor: white
-URxvt*shading: 40
+URxvt*jumpScroll:true
+URxvt*skipScroll:true
 
 ## change default colors
 URxvt*background: #000000
@@ -41,13 +36,9 @@ URxvt*font:              xft:terminus:pixelsize=7
 URxvt*boldFont:          xft:terminus:bold:pixelsize=7
 URxvt*termName:          xterm-256color
 URxvt*imLocale:          en_US.UTF-8
-URxvt*loginShell:        true
 URxvt*saveLines:         32767
-URxvt*boldMode:          false
 URxvt*xftAntialias:      false
-URxvt*jumpScroll:        true
 URxvt*internalBorder:    0
-URxvt*cursorBlink:       false
 
 xclock*hourColor:     rgb:0/0/0
 xclock*minuteColor:   rgb:8/8/8
