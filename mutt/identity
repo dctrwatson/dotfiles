@@ -1,0 +1,8 @@
+set realname    = "MY NAME"
+set from        = "example@example.org"
+set imap_user   = "example@gmail.com"
+set imap_pass   = "PASSWORD"
+set smtp_pass   = "PASSWORD"
+set smtp_url    = "smtps://example@gmail.com@mtp.gmail.com:465/"
+set pgp_sign_as = "0xFFFFFFFF"
+# vim: ft=muttrc

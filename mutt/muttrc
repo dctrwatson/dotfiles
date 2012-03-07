@@ -1,0 +1,78 @@
+set alias_file      = ~/.mutt/aliases
+set certificate_file= ~/.mutt/certificates
+set header_cache    = ~/.mutt/cache/headers
+set message_cachedir= ~/.mutt/cache/bodies
+set mailcap_path    = ~/.mutt/mailcap
+
+set editor          = "vim + -c 'set textwidth=72' -c 'set wrap' -c 'set nocp' -c 'set spell' -c '?^$'"
+set query_command   = "goobook query '%s'"
+bind editor <Tab> complete-query
+
+set folder      = "imaps://imap.gmail.com:993"
+set spoolfile   = "+INBOX"
+set postponed   = "+[Gmail]/Drafts"
+
+set imap_check_subscribed   = yes
+set imap_list_subscribed    = yes
+set ssl_force_tls           = yes
+
+unset beep
+unset collapse_unread
+set implicit_autoview   = yes
+set mail_check          = 30
+unset markers
+unset mark_old
+set pager_index_lines   = 10
+set pager_context       = 5
+set pager_stop          = yes
+set pipe_decode         = yes
+set quit                = ask-yes
+unset record
+set reverse_alias       = yes
+set sort                = threads
+set sort_aux            = reverse-last-date-received
+unset sort_re
+set thorough_search
+set thread_received     = yes
+set tilde               = yes
+set timeout             = 5
+set uncollapse_jump     = yes
+
+alternative_order text/plain text/enriched text/html
+
+set attribution     = "On %d, %n <%a> wrote:"
+set status_format   = "-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b? %?l? %l?]---(%s/%S)-default-%>-(%P)---"
+set index_format    = "%4C %Z  %[%a %b %D %Y %l:%M:%S%p]  %-15.15L (%?l?%4l&%4c?) %s"
+
+unset copy
+set edit_headers    = yes
+set fast_reply      = yes
+set fcc_attach      = yes
+set forward_format  = "Fwd: %s"
+set forward_quote   = yes
+set include         = yes
+unset recall
+unset reply_self
+set reply_to        = yes
+
+ignore *
+unignore date: from: to: cc: subject:
+unignore x-mailing-list: posted-to:
+unignore x-mailer:
+hdr_order date: from: to: cc: subject:
+
+source $alias_file
+source ~/.mutt/identity
+source ~/.mutt/colors
+source ~/.mutt/keybindings
+
+source ~/.mutt/gpg-agent.rc
+set crypt_autosign              = yes
+set crypt_replysign             = yes
+set crypt_replysignencrypted    = yes
+set pgp_use_gpg_agent           = yes
+
+set sidebar_visible = yes
+set sidebar_width    = 30
+set sidebar_delim   = '|'
+color   sidebar_new brightmagenta   default
