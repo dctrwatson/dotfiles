@@ -23,6 +23,15 @@ macro index,pager gt "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to 'Sent Mai
 folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
 folder-hook +[Gmail]/Trash macro index,pager y <save-message>=INBOX<enter><enter> "Move to inbox"
 folder-hook +[Gmail]/Starred bind  index,pager y flag-message #"Toggle star"
+
+# Other bindings
+macro index \CR "T~N\n;WN;T~O\n;WO;\CT~A\n" "mark all messages read"
+
+# Sidebar bindings
+bind index,pager \CJ sidebar-prev
+bind index,pager \CK sidebar-next
+bind index,pager \CO sidebar-open
+
 folder-hook . "exec collapse-all"
 
 # vim: ft=muttrc
