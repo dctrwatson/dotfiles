@@ -38,3 +38,4 @@ spellcheck() {
   done
 }
 
+alias ssh="TERM=rxvt-unicode ssh"
