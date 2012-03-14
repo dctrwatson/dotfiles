@@ -25,6 +25,7 @@ folder-hook +[Gmail]/Trash macro index,pager y <save-message>=INBOX<enter><enter
 folder-hook +[Gmail]/Starred bind  index,pager y flag-message #"Toggle star"
 
 # Other bindings
+#macro index \CR "T~N\n;WNT~O;WO\CT~A" "mark all messages read"
 macro index \CR "T~N\n;WN;T~O\n;WO;\CT~A\n" "mark all messages read"
 
 # Sidebar bindings
