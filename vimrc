@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 set history=500 "remember last 500 commands
 
 " Enable filetype plugin
@@ -56,6 +58,8 @@ set showmode " Show current mode (Insert,Replace,Visual,etc)
 set showcmd
 set laststatus=2 " Always show status line
 
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+set encoding=utf-8 " Necessary to show unicode glyphs
 colorscheme torte " Feel free to change this
 
 set ttyfast " Help with slow scrolling
@@ -70,5 +74,3 @@ nnoremap <F3> :set invnu nu?<CR>
 " F4 to toggle relative line numebrs
 nnoremap <F4> :set invrnu rnu?<CR>
 
-" Format statusline
-set statusline=%F%m%r%h%w\ [FMT:%{&ff}]\ [TYP:%Y]\ [L:%l\ C:%v]\ [%p%%/%L] 
