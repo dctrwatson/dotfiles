@@ -67,5 +67,8 @@ set pastetoggle=<F2>
 " F3 to toggle line numbers
 nnoremap <F3> :set invnu nu?<CR>
 
+" F4 to toggle relative line numebrs
+nnoremap <F4> :set invrnu rnu?<CR>
+
 " Format statusline
 set statusline=%F%m%r%h%w\ [FMT:%{&ff}]\ [TYP:%Y]\ [L:%l\ C:%v]\ [%p%%/%L] 
