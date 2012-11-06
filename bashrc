@@ -1,24 +1,6 @@
 [[ $0 != -* ]] && source /etc/profile
 
-# options
-set -o notify
-set -o vi
-
-shopt -s cdspell
-shopt -s checkwinsize
-shopt -s dirspell
-shopt -s extglob
-shopt -s histappend
-
-# ENV
-BLOCKSIZE=k; export BLOCKSIZE
-EDITOR=vi; export EDITOR
-PAGER="less -FirSwX"; export PAGER
-MANPAGER="less -FiRswX"; export MANPAGER
-
-# VirtualEnv
-export WORKON_HOME=$HOME/Envs
-source /usr/local/bin/virtualenvwrapper.sh
+source $HOME/.bashrc-universal
 
 # completion
 source /usr/local/share/git-core/contrib/completion/git-completion.bash
