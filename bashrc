@@ -2,6 +2,8 @@
 
 source $HOME/.bashrc-universal
 
+shopt -s dirspell
+
 # completion
 source /usr/local/share/git-core/contrib/completion/git-completion.bash
 complete -cf sudo

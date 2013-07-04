@@ -4,7 +4,6 @@ set -o vi
 
 shopt -s cdspell
 shopt -s checkwinsize
-shopt -s dirspell
 shopt -s extglob
 shopt -s histappend
 
@@ -14,6 +13,14 @@ EDITOR=vim; export EDITOR
 PAGER="less -FirSwX"; export PAGER
 MANPAGER="less -FiRswX"; export MANPAGER
 
+PDSH_SSH_ARGS_APPEND="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"; export PDSH_SSH_ARGS_APPEND
+
 # VirtualEnv
 export WORKON_HOME=$HOME/Envs
 source /usr/local/bin/virtualenvwrapper.sh
+
+if [ -f /usr/local/etc/bash_completion ]; then
+  . /usr/local/etc/bash_completion
+fi
+
+export PATH=/usr/local/bin:$PATH
