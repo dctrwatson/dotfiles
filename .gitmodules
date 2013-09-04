@@ -16,3 +16,9 @@
 [submodule "vim/bundle/vim-flake8"]
 	path = vim/bundle/vim-flake8
 	url = git://github.com/nvie/vim-flake8.git
+[submodule "vim/bundle/fruity-vim-colorscheme"]
+	path = vim/bundle/fruity-vim-colorscheme
+	url = git@github.com:mitsuhiko/fruity-vim-colorscheme.git
+[submodule "vim/bundle/go"]
+	path = vim/bundle/go
+	url = git@github.com:fsouza/go.vim.git

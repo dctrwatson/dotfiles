@@ -16,11 +16,9 @@ MANPAGER="less -FiRswX"; export MANPAGER
 PDSH_SSH_ARGS_APPEND="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"; export PDSH_SSH_ARGS_APPEND
 
 # VirtualEnv
-export WORKON_HOME=$HOME/Envs
+WORKON_HOME=$HOME/Envs ; export WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
-
-export PATH=/usr/local/bin:$PATH

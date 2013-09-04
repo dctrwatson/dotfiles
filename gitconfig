@@ -3,43 +3,29 @@
   email = john@dctrwatson.com
 
 [alias]
-  st = status -sb
   co = checkout
-  msg = commit --allow-empty -m
   lol = log --pretty=format:'%Cred%h %Creset%s %Cgreen(%an)' --graph --decorate
-  unstage = reset HEAD
-  done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
-  up = !git fetch origin && git rebase origin/master
-  aa = add .
-  new = ls-files --others --exclude-standard
-  added = diff --cached --name-only
-  today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-  plre = pull --rebase
-  ff = merge --ff-only
-  newauthor = commit --amend --reset-author -C HEAD
 
 [format]
   pretty = %C(magenta reverse)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 
 [diff]
+  algorithm = patience
   wordRegex = [^[:space:]]
 
 [color]
   ui = auto
 
 [color "branch"]
-  current = yellow reverse
+  current = red
   local = yellow
   remote = green
 
 [color "diff"]
-  whitespace = red reverse
-  plain = black
-  meta = yellow bold
-  frag = magenta bold
+  meta = cyan
+  frag = magenta
   old = red bold
   new = green bold
-  commit = yellow
 
 [color "status"]
   added = yellow
@@ -50,10 +36,9 @@
   autocorrect = 1
 
 [core]
-  whitespace=tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
+  whitespace = tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
   autocrlf = input
   editor = /usr/local/bin/vim 
 
 [push]
   default = tracking
-
