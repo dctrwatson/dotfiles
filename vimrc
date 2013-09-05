@@ -1,3 +1,5 @@
+set runtimepath+=$GOROOT/misc/vim
+
 set nocompatible "allows for backwards imcompatible changes to be in effect
 set backspace=indent,eol,start
 
@@ -46,12 +48,9 @@ set nobackup
 set nowb
 set noswapfile
 
-" Fix tabs for formatting
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+" Tab Settings
 set smarttab
+set tabstop=8
 
 set lbr " Wrap lines at words
 
@@ -94,10 +93,11 @@ let g:gist_show_privates = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'xclip -selection clipboard'
 
-" go support
-" ----------
-autocmd BufNewFile,BufRead *.go setlocal ft=go
-autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+" python support
+" --------------
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+\ formatoptions+=croq softtabstop=4 smartindent
+\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 " YAML support
 " ------------
