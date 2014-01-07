@@ -1,4 +1,5 @@
 set runtimepath+=$GOROOT/misc/vim
+set runtimepath+=$HOME/gocode/src/github.com/golang/lint/misc/vim
 
 set nocompatible "allows for backwards imcompatible changes to be in effect
 set backspace=indent,eol,start
@@ -111,3 +112,13 @@ autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " vim
 " ---
 autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+
+" Javascript
+" ----------
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufNewFile,BufRead *.json setlocal ft=javascript
+autocmd FileType javascript setlocal commentstring=//\ %s
+
+" Dot support
+" -----------
+autocmd FileType dot setlocal shiftwidth=2 tabstop=2 softtabstop=2
