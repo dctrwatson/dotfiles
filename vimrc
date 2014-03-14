@@ -94,6 +94,14 @@ let g:gist_show_privates = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'xclip -selection clipboard'
 
+" Always enable rainbow parens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+let g:is_bash = 1
+
 " python support
 " --------------
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
@@ -122,3 +130,14 @@ autocmd FileType javascript setlocal commentstring=//\ %s
 " Dot support
 " -----------
 autocmd FileType dot setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" Shell support
+" -------------
+autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+
+" php support
+" -----------
+autocmd FileType php setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+"
+" Unmap > mapping for puppet
+autocmd FileType puppet iunmap <buffer> <silent> >
