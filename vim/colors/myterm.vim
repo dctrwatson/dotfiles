@@ -27,7 +27,7 @@ hi NonText      cterm=bold ctermfg=darkblue
 hi Directory    ctermfg=darkcyan
 hi ErrorMsg     cterm=bold ctermfg=7 ctermbg=1
 hi IncSearch    cterm=NONE ctermfg=yellow ctermbg=green
-hi Search       cterm=NONE ctermfg=grey ctermbg=blue
+hi Search       cterm=NONE ctermfg=yellow ctermbg=blue
 hi MoreMsg      ctermfg=darkgreen
 hi ModeMsg      cterm=NONE ctermfg=brown
 hi LineNr       ctermfg=3
@@ -58,6 +58,5 @@ hi Underlined   cterm=underline ctermfg=5
 hi Ignore       cterm=bold ctermfg=7
 hi Ignore       ctermfg=darkgrey
 hi Error        cterm=bold ctermfg=7 ctermbg=1
-
 
 "vim: sw=4

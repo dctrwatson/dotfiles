@@ -24,7 +24,7 @@ endfunction
 
 "" ** internal ** {{{
 
-"" warnings 
+"" warnings
 
 let s:displayed_warnings = 0
 function s:Warnings()
@@ -137,7 +137,7 @@ function! s:Flake8()  " {{{
 
     " perform the grep itself
     let &grepformat="%f:%l:%c: %m\,%f:%l: %m"
-    let &grepprg=s:flake8_cmd
+    let &grepprg=s:flake8_cmd . " --select="
     silent! grep! "%"
 
     " restore grep settings

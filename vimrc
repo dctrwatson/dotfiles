@@ -86,6 +86,9 @@ nnoremap <F3> :set invnu nu?<CR>
 " F4 to toggle relative line numebrs
 nnoremap <F4> :set invrnu rnu?<CR>
 
+" airline settings
+let g:airline#extensions#whitespace#mixed_indent_algo = 2
+
 let g:rbpt_colorpairs = [
   \ ['brown',       'RoyalBlue3'],
   \ ['Darkblue',    'SeaGreen3'],
@@ -130,10 +133,9 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
+let g:flake8_show_in_file = 1
+
 autocmd BufWritePost *.py call Flake8()
-let g:flake8_ignore="E129"
-let g:flake8_max_line_length=100
-let g:flake8_max_complexity=50
 
 " YAML support
 " ------------
