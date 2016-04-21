@@ -56,14 +56,14 @@
 [push]
   default = tracking
 
-[transfer] 
-  fsckobjects = true 
+[transfer]
+  fsckobjects = true
 
-[fetch] 
-  fsckobjects = true 
+[fetch]
+  fsckobjects = true
 
-[receive] 
-  fsckobjects = true 
+[receive]
+  fsckobjects = true
 
 [include]
   path = ~/.local_gitconfig

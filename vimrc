@@ -121,6 +121,9 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:is_bash = 1
 
+" better whitespace settings
+autocmd BufWritePre * StripWhitespace
+
 " python support
 " --------------
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
