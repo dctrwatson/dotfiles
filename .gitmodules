@@ -7,18 +7,12 @@
 [submodule "vim/bundle/vim-puppet"]
 	path = vim/bundle/vim-puppet
 	url = git://github.com/rodjek/vim-puppet.git
-[submodule "vim/bundle/gist-vim"]
-	path = vim/bundle/gist-vim
-	url = git://github.com/mattn/gist-vim.git
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
 	url = git://github.com/mattn/webapi-vim.git
 [submodule "vim/bundle/vim-flake8"]
 	path = vim/bundle/vim-flake8
 	url = git://github.com/nvie/vim-flake8.git
-[submodule "vim/bundle/go"]
-	path = vim/bundle/go
-	url = git@github.com:fsouza/go.vim.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = git@github.com:kien/rainbow_parentheses.vim.git
