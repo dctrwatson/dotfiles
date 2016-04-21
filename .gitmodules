@@ -13,6 +13,3 @@
 [submodule "vim/bundle/vim-flake8"]
 	path = vim/bundle/vim-flake8
 	url = git://github.com/nvie/vim-flake8.git
-[submodule "vim/bundle/rainbow_parentheses"]
-	path = vim/bundle/rainbow_parentheses
-	url = git@github.com:kien/rainbow_parentheses.vim.git
