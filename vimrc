@@ -94,6 +94,25 @@ let g:gist_show_privates = 1
 let g:gist_post_private = 1
 let g:gist_clip_command = 'xclip -selection clipboard'
 
+let g:rbpt_colorpairs = [
+  \ ['brown',       'RoyalBlue3'],
+  \ ['Darkblue',    'SeaGreen3'],
+  \ ['darkgray',    'DarkOrchid3'],
+  \ ['darkgreen',   'firebrick3'],
+  \ ['darkcyan',    'RoyalBlue3'],
+  \ ['darkred',     'SeaGreen3'],
+  \ ['darkmagenta', 'DarkOrchid3'],
+  \ ['brown',       'firebrick3'],
+  \ ['gray',        'RoyalBlue3'],
+  \ ['darkmagenta', 'DarkOrchid3'],
+  \ ['Darkblue',    'firebrick3'],
+  \ ['darkgreen',   'RoyalBlue3'],
+  \ ['darkcyan',    'SeaGreen3'],
+  \ ['darkred',     'DarkOrchid3'],
+  \ ['red',         'firebrick3'],
+\ ]
+let g:rbpt_max = 15
+
 " Always enable rainbow parens
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -107,6 +126,11 @@ let g:is_bash = 1
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+autocmd BufWritePost *.py call Flake8()
+let g:flake8_ignore="E129"
+let g:flake8_max_line_length=100
+let g:flake8_max_complexity=50
 
 " YAML support
 " ------------
@@ -138,6 +162,18 @@ autocmd FileType sh setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 " php support
 " -----------
 autocmd FileType php setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+" protobuf support
+" ----------------
+autocmd FileType proto setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd BufNewFile,BufRead *.proto setlocal ft=proto
+
+" supervsior support
+" ----------------
+autocmd FileType supervisor setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd BufNewFile,BufRead *.supervisor setlocal ft=supervisor
+
 "
 " Unmap > mapping for puppet
 autocmd FileType puppet iunmap <buffer> <silent> >
+autocmd FileType puppet setlocal shiftwidth=4 tabstop=4 softtabstop=4
