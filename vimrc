@@ -172,8 +172,3 @@ autocmd BufNewFile,BufRead *.proto setlocal ft=proto
 " ----------------
 autocmd FileType supervisor setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 autocmd BufNewFile,BufRead *.supervisor setlocal ft=supervisor
-
-"
-" Unmap > mapping for puppet
-autocmd FileType puppet iunmap <buffer> <silent> >
-autocmd FileType puppet setlocal shiftwidth=4 tabstop=4 softtabstop=4
