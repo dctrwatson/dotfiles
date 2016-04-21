@@ -1,6 +1,3 @@
-set runtimepath+=$GOROOT/misc/vim
-set runtimepath+=$HOME/gocode/src/github.com/golang/lint/misc/vim
-
 set nocompatible "allows for backwards imcompatible changes to be in effect
 set backspace=indent,eol,start
 
@@ -89,11 +86,6 @@ nnoremap <F3> :set invnu nu?<CR>
 " F4 to toggle relative line numebrs
 nnoremap <F4> :set invrnu rnu?<CR>
 
-let g:gist_browser_command = 'chrome %URL%'
-let g:gist_show_privates = 1
-let g:gist_post_private = 1
-let g:gist_clip_command = 'xclip -selection clipboard'
-
 let g:rbpt_colorpairs = [
   \ ['brown',       'RoyalBlue3'],
   \ ['Darkblue',    'SeaGreen3'],
@@ -112,6 +104,14 @@ let g:rbpt_colorpairs = [
   \ ['red',         'firebrick3'],
 \ ]
 let g:rbpt_max = 15
+
+" vim-go settings
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " Always enable rainbow parens
 au VimEnter * RainbowParenthesesToggle
