@@ -24,6 +24,15 @@
 [diff]
   algorithm = patience
   wordRegex = [^[:space:]]
+  compactionHeuristic = 1
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[interactive]
+  diffFilter = diff-highlight
 
 [color]
   ui = auto
@@ -50,7 +59,7 @@
   autocorrect = 1
 
 [core]
-  whitespace=tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
+  whitespace = tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
   autocrlf = input
 
 [push]
