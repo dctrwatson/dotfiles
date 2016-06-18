@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec $(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight "${@}"

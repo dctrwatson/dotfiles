@@ -21,6 +21,7 @@ set wildmenu
 set wildmode=list:longest,full "better tab completion
 
 set ruler "Always show current position
+set cursorline
 
 set bs=2 "Normal backspace
 
@@ -41,14 +42,19 @@ set t_vb=
 
 syntax on " Syntax highlighting
 
-" Do we really need this extra files?
-set nobackup
-set nowb
-set noswapfile
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+  set undodir=~/.vim/undo
+endif
+
+" Don’t create backups when editing files in certain directories
+set backupskip=/tmp/*,/private/tmp/*
 
 " Tab Settings
 set smarttab
-set tabstop=8
+set tabstop=4
 
 set lbr " Wrap lines at words
 
@@ -63,8 +69,12 @@ set showcmd
 set laststatus=2 " Always show status line
 
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-set encoding=utf-8 " Necessary to show unicode glyphs
+set encoding=utf-8 nobomb " Necessary to show unicode glyphs
 colorscheme myterm " Feel free to change this
+
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,nbsp:_
+set list
 
 set ttyfast " Help with slow scrolling
 
