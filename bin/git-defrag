@@ -1,0 +1,4 @@
+#!/bin/bash
+git remote update --prune
+git fsck --full
+git gc --aggressive

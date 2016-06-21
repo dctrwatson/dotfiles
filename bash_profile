@@ -1,7 +1,10 @@
 # options
 set -o notify
 
-shopt -s cdspell checkwinsize dirspell extglob globstar histappend
+shopt -s cdspell checkwinsize extglob histappend
+if [ "${BASH_VERSINFO}" -ge "4" ] ; then
+    shopt -s dirspell globstar
+fi
 
 # ENV
 export PATH="${HOME}/bin:/usr/local/sbin:${PATH}"
@@ -86,6 +89,9 @@ fi
 if which brew &>/dev/null ; then
     if [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
         source "$(brew --prefix)/share/bash-completion/bash_completion"
+    fi
+    if [ -f "$(brew --prefix)/bin/virtualenvwrapper.sh" ] ; then
+        source "$(brew --prefix)/bin/virtualenvwrapper.sh"
     fi
 fi
 
