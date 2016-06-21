@@ -30,10 +30,13 @@ brew install vim --with-override-system-vi
 brew install webp --with-giflib --with-libtiff
 brew install wget --with-iri --with-pcre
 
+brew install bazaar
 brew install iperf
 brew install git --with-brewed-curl --with-brewed-openssl --with-brewed-svn --with-pcre
 brew install git-lfs
 brew install imagemagick --with-fontconfig --with-little-cms2 --with-webp
+brew install jq
+brew install mercurial
 brew install mtr
 brew install nmap
 brew install pianobar
@@ -43,6 +46,7 @@ brew install pv
 brew install pyenv-virtualenvwrapper
 brew install speedtest_cli
 brew install the_silver_searcher
+brew install tree
 
 # Remove outdated versions from the cellar.
 brew cleanup
