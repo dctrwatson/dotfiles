@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sleep 5
+exec xrandr --dpi 141x141/eDP1

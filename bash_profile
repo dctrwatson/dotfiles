@@ -22,6 +22,8 @@ export MANPAGER="less -FiRswX"
 export GREP_COLOR="1;43"
 export LESS="-iRw"
 
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 export HISTIGNORE="&:[bf]g:exit:reset:clear:ls:pwd:[ ]*"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=10000
@@ -41,7 +43,12 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE="${HOME}/.pip/cache"
 
 # aliases
-alias ls="ls -FGhp"
+ls_alias="ls -FGhp"
+if ${ls_alias} -d --color &>/dev/null ; then
+    alias ls="${ls_alias} --color=auto"
+else
+    alias ls="${ls_alias}"
+fi
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -65,6 +72,7 @@ then
   else
     PS1="${CYAN}\u@\h${BLUE} \w \$ "
   fi
+  [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
 else
   CLEAR=""
 
@@ -95,6 +103,14 @@ if which brew &>/dev/null ; then
     fi
 fi
 
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 ARC_PATH="/usr/local/arcanist"
 if [ -d "${ARC_PATH}/bin" ] ; then
     source ${ARC_PATH}/resources/shell/bash-completion
@@ -102,4 +118,8 @@ fi
 
 if [ -x "/usr/libexec/java_home" ] ; then
     export JAVA_HOME=$( /usr/libexec/java_home )
+fi
+
+if [ -x "/usr/bin/keychain" ] ; then
+    eval $( /usr/bin/keychain --eval $HOME/.ssh/id_rsa )
 fi

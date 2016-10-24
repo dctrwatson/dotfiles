@@ -1,7 +1,136 @@
-out_to_x no
-out_to_console yes
-update_interval 1
-total_run_times 0
-use_spacer none
-TEXT
-${time %a %b %d, %Y %T} |Up:${uptime_short} |Avg: $loadavg |IP:${addr re0} |RAM:$memperc% |CPU:${cpu}% | ${downspeedf re0}/${upspeedf re0} 
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2012 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    alignment = 'top_left',
+    background = true,
+    border_width = 0,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=9:normal',
+    gap_x = 0,
+    gap_y = 0,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_type = 'desktop',
+    double_buffer = true,
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false
+}
+
+conky.text = [[
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}SYSTEM $stippled_hr
+${font}${color grey}Uptime: $alignr $uptime
+Procs: $alignr $processes
+Running: $alignr $running_processes
+
+Load Avg: $alignr $loadavg
+${loadgraph 25,0 -t}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}BATTERY $stippled_hr
+${font}${color grey}Status: ${alignr} ${battery}
+Remaining: ${alignr} ${battery_time}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TEMPERATURES $stippled_hr
+${font}${color grey}CPU: ${alignr} ${hwmon 2 temp 1} C
+GPU: ${alignr} ${nvidia temp} C
+Ambient: ${alignr} ${hwmon 2 temp 2} / ${hwmon 2 temp 3} C
+Other: ${alignr} ${hwmon 2 temp 4} C
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}FANS $stippled_hr
+${font}${color grey}CPU: ${alignr} ${hwmon 2 fan 1} RPM
+GPU: ${alignr} ${hwmon 2 fan 2} RPM
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}GPU $stippled_hr
+${font}${color grey}Frequency: ${alignr} ${nvidia gpufreq}
+Mem Frequency: ${alignr} ${nvidia memfreq}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}PROCESSORS $stippled_hr
+${font}${color grey}Frequency (in MHz): ${alignr} $freq
+
+CPU History:
+${cpugraph 25,0 -t}
+CPU1: ${cpu cpu1} % ${cpubar cpu1}
+CPU2: ${cpu cpu2} % ${cpubar cpu2}
+CPU3: ${cpu cpu3} % ${cpubar cpu3}
+CPU4: ${cpu cpu4} % ${cpubar cpu4}
+CPU5: ${cpu cpu5} % ${cpubar cpu5}
+CPU6: ${cpu cpu6} % ${cpubar cpu6}
+CPU7: ${cpu cpu7} % ${cpubar cpu7}
+CPU8: ${cpu cpu8} % ${cpubar cpu8}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TOP PROCS (CPU) $stippled_hr
+${font}${color grey}${top name 1} $alignr ${top cpu 1} %
+${top name 2} $alignr ${top cpu 2} %
+${top name 3} $alignr ${top cpu 3} %
+${top name 4} $alignr ${top cpu 4} %
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TOP PROCS (MEM) $stippled_hr
+${font}${color grey}${top_mem name 1} $alignr ${top_mem mem_res 1}
+${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+${top_mem name 4} $alignr ${top_mem mem_res 4}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}MEMORY $stippled_hr
+${font}${color grey}RAM $alignc $mem / $memmax $alignr $memperc %
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}DISK SPACE $stippled_hr
+${font}${color grey}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /} %
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}DISK I/O $stippled_hr
+${font}${color grey}Read: $alignr $diskio_read
+${diskiograph_read 20,0 -t}
+${font}${color grey}Write: $alignr $diskio_write
+${diskiograph_write 20,0 -t}
+
+${font DejaVu Sans Mono:size=9:bold}${color lightgrey}NETWORK $stippled_hr
+${font}${color grey}SSID: ${wireless_essid wlp2s0}
+Rate: ${wireless_bitrate wlp2s0}
+Quality: ${wireless_link_bar 20,0 wlp2s0}
+
+Download: $alignr ${downspeed wlp2s0}/s
+${downspeedgraph wlp2s0 20,0 -t}
+${font}${color grey}Upload: $alignr ${upspeed wlp2s0}/s
+${upspeedgraph wlp2s0 20,0 -t}
+]]
