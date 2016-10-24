@@ -22,7 +22,7 @@ export MANPAGER="less -FiRswX"
 export GREP_COLOR="1;43"
 export LESS="-iRw"
 
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+hash lesspipe &>/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 
 export HISTIGNORE="&:[bf]g:exit:reset:clear:ls:pwd:[ ]*"
 export HISTCONTROL="ignoreboth:erasedups"
@@ -60,7 +60,7 @@ alias l="ls -CF"
 [ -r "${HOME}/.dbx_aliases" ] && source ${HOME}/.dbx_aliases
 
 # prompt
-if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null;
+if hash tput &>/dev/null && tput setaf 1 >& /dev/null;
 then
   CLEAR="\[\e[0m\]"
   RED="\[\e[01;31m\]"
@@ -72,7 +72,7 @@ then
   else
     PS1="${CYAN}\u@\h${BLUE} \w \$ "
   fi
-  [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
+  hash dircolors &>/dev/null && eval "$(dircolors -b)"
 else
   CLEAR=""
 
@@ -86,7 +86,7 @@ fi
 export PROMPT_DIRTRIM=4
 export PS1=${CLEAR}${PS1}${CLEAR}
 
-if which go &>/dev/null ; then
+if hash go &>/dev/null ; then
     export GOROOT="$( go env GOROOT )"
     export GOPATH="${HOME}/go"
     export PATH="${PATH}:${GOPATH}/bin"
@@ -94,7 +94,7 @@ if which go &>/dev/null ; then
     #export CGO_LDFLAGS="/usr/local/lib/libzookeeper_mt.a"
 fi
 
-if which brew &>/dev/null ; then
+if hash brew &>/dev/null ; then
     if [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
         source "$(brew --prefix)/share/bash-completion/bash_completion"
     fi
@@ -111,15 +111,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-ARC_PATH="/usr/local/arcanist"
-if [ -d "${ARC_PATH}/bin" ] ; then
-    source ${ARC_PATH}/resources/shell/bash-completion
+if hash arc &>/dev/null ; then
+    source "$( cd $( dirname $( readlink $( which arc )))/.. && pwd -P )/resources/shell/bash-completion"
 fi
 
-if [ -x "/usr/libexec/java_home" ] ; then
+if hash java_home &>/dev/null ; then
     export JAVA_HOME=$( /usr/libexec/java_home )
 fi
 
-if [ -x "/usr/bin/keychain" ] ; then
-    eval $( /usr/bin/keychain --eval $HOME/.ssh/id_rsa )
+if hash keychain &>/dev/null ; then
+    eval $( keychain --eval $HOME/.ssh/id_rsa )
 fi
