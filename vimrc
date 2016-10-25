@@ -83,7 +83,7 @@ set scrolloff=5
 
 " enable automatic title setting for terminals
 set title
-set titleold="Terminal"
+let &titleold=$TERM
 set titlestring=%F
 
 " F2 to toggle paste-mode
