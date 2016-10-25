@@ -1,0 +1,77 @@
+// vim:ts=4:sw=4:et
+{
+    "name": "conky",
+    "percent": 0.0833333333333332,
+    "swallows": [
+       {
+          "class": "^conky$",
+          "instance": "^conky$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.624104821802935,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Chrome",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^Dropbox\\ Chrome$",
+                  "instance": "^google\\-chrome\\-unstable\\ \\(\\/home\\/johnw\\/\\.config\\/google\\-chrome\\-unstable\\)$",
+                  "window_role": "^browser$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "name": "Slack",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^Dropbox\\ Chrome$",
+                  "instance": "^crx_ppgkkhfohgcdngllhgdmmklgemhkcgip$",
+                  "window_role": "^pop\\-up$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "layout": "splitv",
+    "percent": 0.292561844863732,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "urxvt",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^URxvt$",
+                  "instance": "^urxvt$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "name": "urxvt",
+            "percent": 0.5,
+            "swallows": [
+               {
+                  "class": "^URxvt$",
+                  "instance": "^urxvt$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
