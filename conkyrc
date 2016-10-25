@@ -105,18 +105,17 @@ ${font}${color grey}${top name 1} $alignr ${top cpu 1} %
 ${top name 2} $alignr ${top cpu 2} %
 ${top name 3} $alignr ${top cpu 3} %
 ${top name 4} $alignr ${top cpu 4} %
+${top name 5} $alignr ${top cpu 5} %
 
 ${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TOP PROCS (MEM) $stippled_hr
 ${font}${color grey}${top_mem name 1} $alignr ${top_mem mem_res 1}
 ${top_mem name 2} $alignr ${top_mem mem_res 2}
 ${top_mem name 3} $alignr ${top_mem mem_res 3}
 ${top_mem name 4} $alignr ${top_mem mem_res 4}
+${top_mem name 5} $alignr ${top_mem mem_res 5}
 
 ${font DejaVu Sans Mono:size=9:bold}${color lightgrey}MEMORY $stippled_hr
 ${font}${color grey}RAM $alignc $mem / $memmax $alignr $memperc %
-
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}DISK SPACE $stippled_hr
-${font}${color grey}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /} %
 
 ${font DejaVu Sans Mono:size=9:bold}${color lightgrey}DISK I/O $stippled_hr
 ${font}${color grey}Read: $alignr $diskio_read
