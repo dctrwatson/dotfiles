@@ -1,6 +1,8 @@
 " MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
+scriptencoding utf-8
+
 let s:section_use_groups     = get(g:, 'airline#extensions#default#section_use_groupitems', 1)
 let s:section_truncate_width = get(g:, 'airline#extensions#default#section_truncate_width', {
       \ 'b': 79,
@@ -22,6 +24,9 @@ function! s:get_section(winnr, key, ...)
     endif
   endif
   let spc = g:airline_symbols.space
+  if !exists('g:airline_section_{a:key}')
+    return ''
+  endif
   let text = airline#util#getwinvar(a:winnr, 'airline_section_'.a:key, g:airline_section_{a:key})
   let [prefix, suffix] = [get(a:000, 0, '%('.spc), get(a:000, 1, spc.'%)')]
   return empty(text) ? '' : prefix.text.suffix
