@@ -1,20 +1,7 @@
 // vim:ts=4:sw=4:et
 {
-    "name": "conky",
-    "border": "pixel",
-    "percent": 0.0833333333333332,
-    "swallows": [
-       {
-          "class": "^conky$",
-          "instance": "^conky$"
-       }
-    ],
-    "type": "con"
-}
-
-{
     "layout": "splitv",
-    "percent": 0.59748962058618,
+    "percent": 0.5,
     "type": "con",
     "nodes": [
         {
@@ -30,23 +17,40 @@
             "type": "con"
         },
         {
-            "name": "Slack",
+            "layout": "tabbed",
             "percent": 0.5,
-            "swallows": [
-               {
-                  "class": "^Dropbox\\ Chrome$",
-                  "instance": "^crx_ppgkkhfohgcdngllhgdmmklgemhkcgip$",
-                  "window_role": "^pop\\-up$"
-               }
-            ],
-            "type": "con"
+            "type": "con",
+            "nodes": [
+                {
+                    "name": "urxvt",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                          "class": "^URxvt$",
+                          "instance": "^urxvt$",
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "name": "urxvt",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                          "class": "^URxvt$",
+                          "instance": "^urxvt$",
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
         }
     ]
 }
 
 {
-    "layout": "splitv",
-    "percent": 0.319177046080487,
+    "layout": "tabbed",
+    "percent": 0.5,
     "type": "con",
     "nodes": [
         {
@@ -55,7 +59,7 @@
             "swallows": [
                {
                   "class": "^URxvt$",
-                  "instance": "^urxvt$"
+                  "instance": "^urxvt$",
                }
             ],
             "type": "con"
@@ -66,7 +70,7 @@
             "swallows": [
                {
                   "class": "^URxvt$",
-                  "instance": "^urxvt$"
+                  "instance": "^urxvt$",
                }
             ],
             "type": "con"

@@ -1,6 +1,10 @@
-set $mod Mod4
+# Aesthetics
+new_window normal 1
 
 font pango:Noto Mono 9
+
+# Windows key
+set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -132,5 +136,6 @@ bindsym $mod+Control+space scratchpad show
 bindsym $mod+Control+Shift+space move scratchpad
 
 # load workspaces
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/johnw/.i3/workspace-2.json'"
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/johnw/.i3/workspace-1.json'"
 exec --no-startup-id "sleep 3; conky"
