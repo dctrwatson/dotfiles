@@ -31,7 +31,10 @@ bindsym $mod+Shift+x+Right move container to output right
 bindsym $mod+Shift+x+Left move container to output left
 
 bindsym $mod+h split h
+bindsym $mod+Shift+h split h, layout tabbed
+
 bindsym $mod+v split v
+bindsym $mod+Shift+v split v, layout tabbed
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
