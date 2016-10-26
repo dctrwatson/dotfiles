@@ -130,4 +130,4 @@ bindsym $mod+Control+Shift+space move scratchpad
 
 # load workspaces
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/johnw/.i3/workspace-1.json'"
-exec --no-startup-id "sleep 1; conky"
+exec --no-startup-id "sleep 3; conky"
