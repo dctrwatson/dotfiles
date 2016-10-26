@@ -17,6 +17,9 @@
   plre = pull --rebase
   ff = merge --ff-only
   newauthor = commit --amend --reset-author -C HEAD
+  subtree-add = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+  subtree-pull =  "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+
 
 [format]
   pretty = %C(magenta reverse)%h%Creset %Cgreen[%cr]%Creset (%an) %s
