@@ -194,4 +194,5 @@ autocmd FileType bzl setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 " Pystachio support
 " ----------------
-autocmd FileType conf setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+autocmd BufNewFile,BufRead *.pyst setlocal ft=python
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
