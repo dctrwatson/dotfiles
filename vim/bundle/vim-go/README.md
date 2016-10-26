@@ -1,13 +1,15 @@
 # vim-go
 
+<p align="center">
+  <img style="float: right;" src="assets/vim-go.png" alt="Vim-go logo"/>
+</p>
+
 Go (golang) support for Vim, which comes with pre-defined sensible settings (like
 auto gofmt on save), with autocomplete, snippet support, improved syntax
 highlighting, go toolchain commands, and more.  If needed vim-go installs all
 necessary binaries for providing seamless Vim integration with current
 commands. It's highly customizable and each individual feature can be
 disabled/enabled easily.
-
-![vim-go](https://dl.dropboxusercontent.com/u/174404/vim-go-2.png)
 
 ## Features
 
@@ -50,10 +52,16 @@ disabled/enabled easily.
   in their own new terminal. (beta)
 * Alternate between implementation and test code with `:GoAlternate`
 
+Checkout the official [tutorial](https://github.com/fatih/vim-go-tutorial)
+that goes literally over all features and shows many tips and tricks. It shows
+how to install vim-go and explains many unknown use cases. Recommended for
+beginners as well as advanced users: https://github.com/fatih/vim-go-tutorial
+
 ## Install
 
-Master branch is supposed to be a development branch. So stuff here can break and change. 
-Please try use always the [latest release](https://github.com/fatih/vim-go/releases/latest)
+Master branch is supposed to be a development branch. So stuff here can break
+and change.  Please try use always the [latest
+release](https://github.com/fatih/vim-go/releases/latest)
 
 Vim-go follows the standard runtime path structure, so I highly recommend to
 use a common and well known plugin manager to install vim-go. Do not use vim-go
@@ -69,6 +77,8 @@ command.
   * `NeoBundle 'fatih/vim-go'`
 *  [Vundle](https://github.com/gmarik/vundle)
   * `Plugin 'fatih/vim-go'`
+*  [Vim packages](http://vimhelp.appspot.com/repeat.txt.html#packages) (since Vim 7.4.1528)
+  * `git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go`
 
 Please be sure all necessary binaries are installed (such as `gocode`, `godef`,
 `goimports`, etc.). You can easily install them with the included
@@ -84,7 +94,8 @@ installed binaries.
 completion (completion by type) install:
 [neocomplete](https://github.com/Shougo/neocomplete.vim) for Vim or
 [deoplete](https://github.com/Shougo/deoplete.nvim) and
-[deoplete-go](https://github.com/zchee/deoplete-go) for NeoVim
+[deoplete-go](https://github.com/zchee/deoplete-go) for NeoVim or
+[SimpleAutoCmplPop](https://github.com/roxma/SimpleAutoComplPop)
 * To display source code tag information on a sidebar install
 [tagbar](https://github.com/majutsushi/tagbar).
 * For snippet features install:
@@ -180,8 +191,8 @@ To change it:
 ```vim
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 ```
@@ -216,6 +227,11 @@ By default when `:GoInstallBinaries` is called, the binaries are installed to
 ```vim
 let g:go_bin_path = expand("~/.gotools")
 let g:go_bin_path = "/home/fatih/.mypath"      "or give absolute path
+```
+
+Disable updating dependencies when installing/updating binaries:
+```vim
+let g:go_get_update = 0
 ```
 
 ### Using with Neovim (beta)
@@ -257,6 +273,14 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 ```
 
+Another issue with `vim-go` and `syntastic` is that the location list window
+that contains the output of commands such as `:GoBuild` and `:GoTest` might not appear.
+To resolve this:
+
+```vim
+let g:go_list_type = "quickfix"
+```
+
 ## More info
 
 Check out the [Wiki](https://github.com/fatih/vim-go/wiki) page for more
@@ -268,8 +292,12 @@ other [various pieces](https://github.com/fatih/vim-go/wiki) of information.
 ## Donation
 
 People have asked for this for a long time, now you can be a fully supporter by
-[being a patron](https://www.patreon.com/fatih)! This is fully optional and is
-just a way to support vim-go's ongoing development directly. Thanks!
+[being a patron](https://www.patreon.com/fatih)!
+
+By being a patron, you are enabling vim-go to grow and mature, helping me to
+invest in bug fixes, new documentation, and improving both current and future
+features. It's completely optional and is just a direct way to support Vim-go's
+ongoing development. Thanks!
 
 [https://www.patreon.com/fatih](https://www.patreon.com/fatih)
 
