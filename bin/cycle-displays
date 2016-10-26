@@ -1,0 +1,30 @@
+#!/bin/bash
+
+connected_displays='xrandr | grep " connected"'
+
+num_connected=$( eval ${connected_displays} | wc -l )
+
+if [ $num_connected -eq 1 ] ; then
+    output=$( eval ${connected_displays} | head -n1 | cut -d' ' -f1 )
+    notify-send "Enabling ${output} just cuz"
+    xrandr --output ${output} --auto
+    xrandr --dpi 141
+    exit 0
+fi
+
+while IFS= read -r output_info ; do
+    output=$( echo "${output_info}" | cut -d' ' -f1 )
+    if [ -z "${next_output}" ] || [ -n "${current_output}" ] ; then
+        next_output=${output}
+        if [ -n "${current_output}" ] ; then
+            break
+        fi
+    fi
+    if [[ "${output_info}" == *mm ]] ; then
+        current_output=${output}
+    fi
+done < <( eval ${connected_displays} )
+
+notify-send "Cycling from ${current_output} to ${next_output}"
+xrandr --output ${next_output} --auto && xrandr --output ${current_output} --off
+xrandr --dpi 141

@@ -24,6 +24,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+bindsym $mod+x+Right move workspace to output right
+bindsym $mod+x+Left move workspace to output left
+
+bindsym $mod+Shift+x+Right move container to output right
+bindsym $mod+Shift+x+Left move container to output left
+
 bindsym $mod+h split h
 bindsym $mod+v split v
 
@@ -112,8 +118,11 @@ exec --no-startup-id "xautolock -detectsleep -time 5 -locker 'xset s activate'"
 bindsym $mod+Control+l exec --no-startup-id "xautolock -locknow"
 
 # screenshot
-bindsym --release $mod+Shift+p exec --no-startup-id "scrot -s ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
-bindsym $mod+Control+p exec --no-startup-id "scrot ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
+bindsym --release $mod+Shift+Print exec --no-startup-id "scrot -s ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
+bindsym $mod+Control+Print exec --no-startup-id "scrot ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
+
+# bind display switch function
+bindsym $mod+p exec --no-startup-id "~/bin/cycle-displays"
 
 # scratchpad
 bindsym $mod+Control+space scratchpad show

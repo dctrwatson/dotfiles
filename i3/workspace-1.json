@@ -15,7 +15,7 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.624104821802935,
+    "percent": 0.59748962058618,
     "type": "con",
     "nodes": [
         {
@@ -47,7 +47,7 @@
 
 {
     "layout": "splitv",
-    "percent": 0.292561844863732,
+    "percent": 0.319177046080487,
     "type": "con",
     "nodes": [
         {

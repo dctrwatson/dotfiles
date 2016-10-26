@@ -7,7 +7,7 @@ if [ "${BASH_VERSINFO}" -ge "4" ] ; then
 fi
 
 # ENV
-export PATH="${HOME}/bin:/usr/local/sbin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/sbin:${PATH}"
 
 ANDROD_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
@@ -38,9 +38,7 @@ export PDSH_RCMD_TYPE="ssh"
 
 # VirtualEnv
 export WORKON_HOME="${HOME}/Envs"
-
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_DOWNLOAD_CACHE="${HOME}/.pip/cache"
+[ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ] && source "${HOME}/.local/bin/virtualenvwrapper.sh"
 
 # aliases
 ls_alias="ls -FGhp"
