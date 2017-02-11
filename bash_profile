@@ -1,7 +1,7 @@
 # options
 set -o notify
 
-shopt -s cdspell checkwinsize extglob histappend
+shopt -s autocd cdspell checkjobs checkwinsize extglob histappend histreedit histverify
 if [ "${BASH_VERSINFO}" -ge "4" ] ; then
     shopt -s dirspell globstar
 fi
@@ -88,8 +88,6 @@ if hash go &>/dev/null ; then
     export GOROOT="$( go env GOROOT )"
     export GOPATH="${HOME}/go"
     export PATH="${PATH}:${GOPATH}/bin"
-    #export CGO_CFLAGS="-I/usr/local/include/zookeeper"
-    #export CGO_LDFLAGS="/usr/local/lib/libzookeeper_mt.a"
 fi
 
 if hash brew &>/dev/null ; then

@@ -6,6 +6,7 @@ $fix = false
 $verbose = false
 $git_marks = {}
 $r_marks = {}
+$note_marks = {}
 $mode = 'hg'
 
 # Parse arguments
@@ -24,7 +25,7 @@ ARGV.delete_if do |cur|
   end
 end
 
-$remote = ARGV[0]
+$remote = ARGV[0] || 'origin'
 
 $dir = File.join('.git', $mode, $remote)
 $git_file = File.join($dir, 'marks-git')
@@ -44,7 +45,7 @@ end
 File.popen(%w[git cat-file --batch-check], 'r+') do |p|
   $git_marks.each do |mark,id|
     p.write(id + "\n")
-    if p.readline =~ /(\h+) (\w+) (\d+)/
+    if p.readline =~ /(\h+) (\w+)(?: (\d+))?/
       type = $2
       $git_marks.delete(mark) unless type == 'commit'
     end
@@ -54,7 +55,11 @@ end
 # Remove notes
 File.popen(%W[git rev-list refs/notes/#{$mode}], 'r', :err => File::NULL) do |p|
   p.each do |l|
-    $git_marks.delete_if { |mark,id| id == l.chomp }
+    mark, id = $git_marks.find { |_,x| x == l.chomp }
+    if mark
+      $git_marks.delete(mark)
+      $note_marks[mark] = id
+    end
   end
 end
 
@@ -83,6 +88,9 @@ if $fix
   File.open($git_file, 'w') do |f|
     $git_marks.each do |mark,id|
       next if r_missing.has_key?(mark)
+      f.puts ':%d %s' % [mark, id]
+    end
+    $note_marks.each do |mark,id|
       f.puts ':%d %s' % [mark, id]
     end
   end

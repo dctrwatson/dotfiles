@@ -30,67 +30,69 @@ conky.config = {
     background = true,
     border_width = 0,
     cpu_avg_samples = 2,
+    default_bar_height = 13,
     default_color = 'white',
+    default_graph_height = 26,
     default_outline_color = 'white',
     default_shade_color = 'white',
+    diskio_avg_samples = 2,
+    double_buffer = true,
     draw_borders = false,
     draw_graph_borders = true,
     draw_outline = false,
     draw_shades = false,
-    use_xft = true,
-    font = 'DejaVu Sans Mono:size=9:normal',
+    font = 'Noto Mono:size=9:normal',
+    format_human_readable = true,
     gap_x = 0,
     gap_y = 0,
-    minimum_height = 5,
-    minimum_width = 5,
     net_avg_samples = 2,
     no_buffers = true,
-    out_to_console = false,
-    out_to_stderr = false,
-    extra_newline = false,
     own_window = true,
     own_window_type = 'desktop',
-    double_buffer = true,
-    stippled_borders = 0,
+    show_graph_range = true,
+    show_graph_scale = true,
+    stippled_borders = 1,
+    top_name_width = 20,
     update_interval = 1.0,
+    update_interval_on_battery = 3.0,
     uppercase = false,
     use_spacer = 'none',
-    show_graph_scale = false,
-    show_graph_range = false
+    use_xft = true,
 }
 
 conky.text = [[
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}SYSTEM $stippled_hr
-${font}${color grey}Uptime: $alignr $uptime
-Procs: $alignr $processes
-Running: $alignr $running_processes
+${font Noto Mono:size=9:bold}${color lightgrey}SYSTEM ${stippled_hr}
+${font}${color grey}Uptime: ${alignr}${uptime}
+Procs: ${alignr}${processes}
+Running: ${alignr} ${running_processes}
 
-Load Avg: $alignr $loadavg
-${loadgraph 25,0 -t}
+Load Avg: ${alignr}${loadavg}
+${loadgraph -t}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}BATTERY $stippled_hr
-${font}${color grey}Status: ${alignr} ${battery}
-Remaining: ${alignr} ${battery_time}
+${font Noto Mono:size=9:bold}${color lightgrey}BATTERY ${stippled_hr}
+${font}${color grey}Status: ${alignr}${battery}
+Remaining: ${alignr}${battery_time}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TEMPERATURES $stippled_hr
-${font}${color grey}CPU: ${alignr} ${hwmon 2 temp 1} C
-GPU: ${alignr} ${nvidia temp} C
-Ambient: ${alignr} ${hwmon 2 temp 2} / ${hwmon 2 temp 3} C
-Other: ${alignr} ${hwmon 2 temp 4} C
+${font Noto Mono:size=9:bold}${color lightgrey}TEMPERATURES ${stippled_hr}
+${font}${color grey}CPU: ${alignr}${hwmon 1 temp 1}C
+Ambient 1: ${alignr}${hwmon 2 temp 2}C
+Ambient 2: ${alignr}${hwmon 2 temp 3}C
+Other: ${alignr}${hwmon 2 temp 4}C
+WiFi: ${alignr}${hwmon 3 temp 1}C
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}FANS $stippled_hr
-${font}${color grey}CPU: ${alignr} ${hwmon 2 fan 1} RPM
-GPU: ${alignr} ${hwmon 2 fan 2} RPM
+${font Noto Mono:size=9:bold}${color lightgrey}FANS ${stippled_hr}
+${font}${color grey}CPU: ${alignr}${hwmon 2 fan 1}RPM
+GPU: ${alignr}${hwmon 2 fan 2}RPM
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}GPU $stippled_hr
-${font}${color grey}Frequency: ${alignr} ${nvidia gpufreq}
-Mem Frequency: ${alignr} ${nvidia memfreq}
+${font Noto Mono:size=9:bold}${color lightgrey}CPU ${stippled_hr}
+${font}${color grey}CPU0: ${alignr}${freq 0}MHz - ${freq 4}MHz
+CPU1: ${alignr}${freq 1}MHz - ${freq 5}MHz
+CPU2: ${alignr}${freq 2}MHz - ${freq 6}MHz
+CPU3: ${alignr}${freq 3}MHz - ${freq 7}MHz
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}PROCESSORS $stippled_hr
-${font}${color grey}Frequency (in MHz): ${alignr} $freq
-
-CPU History:
-${cpugraph 25,0 -t}
+${font Noto Mono:size=9:bold}${color lightgrey}LOAD ${stippled_hr}
+${font}${color grey}History:
+${cpugraph -t}
 CPU1: ${cpu cpu1} % ${cpubar cpu1}
 CPU2: ${cpu cpu2} % ${cpubar cpu2}
 CPU3: ${cpu cpu3} % ${cpubar cpu3}
@@ -100,36 +102,44 @@ CPU6: ${cpu cpu6} % ${cpubar cpu6}
 CPU7: ${cpu cpu7} % ${cpubar cpu7}
 CPU8: ${cpu cpu8} % ${cpubar cpu8}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TOP PROCS (CPU) $stippled_hr
-${font}${color grey}${top name 1} $alignr ${top cpu 1} %
-${top name 2} $alignr ${top cpu 2} %
-${top name 3} $alignr ${top cpu 3} %
-${top name 4} $alignr ${top cpu 4} %
-${top name 5} $alignr ${top cpu 5} %
+${font Noto Mono:size=9:bold}${color lightgrey}TOP PROCS (CPU) ${stippled_hr}
+${font}${color grey}${top name 1} ${alignr}${top cpu 1}%
+${top name 2} ${alignr}${top cpu 2}%
+${top name 3} ${alignr}${top cpu 3}%
+${top name 4} ${alignr}${top cpu 4}%
+${top name 5} ${alignr}${top cpu 5}%
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}TOP PROCS (MEM) $stippled_hr
-${font}${color grey}${top_mem name 1} $alignr ${top_mem mem_res 1}
-${top_mem name 2} $alignr ${top_mem mem_res 2}
-${top_mem name 3} $alignr ${top_mem mem_res 3}
-${top_mem name 4} $alignr ${top_mem mem_res 4}
-${top_mem name 5} $alignr ${top_mem mem_res 5}
+${font Noto Mono:size=9:bold}${color lightgrey}MEMORY ${stippled_hr}
+${font}${color grey}${alignc}Used ${mem} / Total ${memmax}
+Usage: ${memperc} % ${membar}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}MEMORY $stippled_hr
-${font}${color grey}RAM $alignc $mem / $memmax $alignr $memperc %
+${font Noto Mono:size=9:bold}${color lightgrey}TOP PROCS (MEM) ${stippled_hr}
+${font}${color grey}${top_mem name 1} ${alignr}${top_mem mem_res 1}
+${top_mem name 2} ${alignr}${top_mem mem_res 2}
+${top_mem name 3} ${alignr}${top_mem mem_res 3}
+${top_mem name 4} ${alignr}${top_mem mem_res 4}
+${top_mem name 5} ${alignr}${top_mem mem_res 5}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}DISK I/O $stippled_hr
-${font}${color grey}Read: $alignr $diskio_read
-${diskiograph_read 20,0 -t}
-${font}${color grey}Write: $alignr $diskio_write
-${diskiograph_write 20,0 -t}
+${font Noto Mono:size=9:bold}${color lightgrey}DISK I/O ${stippled_hr}
+${font}${color grey}Read: ${alignr}${diskio_read}
+${diskiograph_read -t}
+${font}${color grey}Write: ${alignr}${diskio_write}
+${diskiograph_write -t}
 
-${font DejaVu Sans Mono:size=9:bold}${color lightgrey}NETWORK $stippled_hr
+${font Noto Mono:size=9:bold}${color lightgrey}TOP PROCS (IO) ${stippled_hr}
+${font}${color grey}${top_io name 1} ${alignr}${top_io io_perc 1}%
+${top_io name 2} ${alignr}${top_io io_perc 2}%
+${top_io name 3} ${alignr}${top_io io_perc 3}%
+${top_io name 4} ${alignr}${top_io io_perc 4}%
+${top_io name 5} ${alignr}${top_io io_perc 5}%
+
+${font Noto Mono:size=9:bold}${color lightgrey}NETWORK ${stippled_hr}
 ${font}${color grey}SSID: ${wireless_essid wlp2s0}
 Rate: ${wireless_bitrate wlp2s0}
-Quality: ${wireless_link_bar 20,0 wlp2s0}
+Quality: ${wireless_link_qual_perc wlp2s0}% ${wireless_link_bar wlp2s0}
 
-Download: $alignr ${downspeed wlp2s0}/s
-${downspeedgraph wlp2s0 20,0 -t}
-${font}${color grey}Upload: $alignr ${upspeed wlp2s0}/s
-${upspeedgraph wlp2s0 20,0 -t}
+Download: ${alignr}${downspeed wlp2s0}/s
+${downspeedgraph wlp2s0 -t}
+${font}${color grey}Upload: ${alignr}${upspeed wlp2s0}/s
+${upspeedgraph wlp2s0 -t}
 ]]

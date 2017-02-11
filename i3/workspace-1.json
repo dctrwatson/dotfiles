@@ -2,7 +2,7 @@
 {
     "name": "conky",
     "border": "pixel",
-    "percent": 0.0833333333333332,
+    "percent": 0.0867187499999999,
     "swallows": [
        {
           "class": "^conky$",
@@ -14,7 +14,7 @@
 
 {
     "layout": "splitv",
-    "percent": 0.59748962058618,
+    "percent": 0.563380139638011,
     "type": "con",
     "nodes": [
         {
@@ -46,7 +46,7 @@
 
 {
     "layout": "splitv",
-    "percent": 0.319177046080487,
+    "percent": 0.349901110361989,
     "type": "con",
     "nodes": [
         {

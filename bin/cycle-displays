@@ -7,6 +7,8 @@ num_connected=$( eval ${connected_displays} | wc -l )
 if [ $num_connected -eq 1 ] ; then
     output=$( eval ${connected_displays} | head -n1 | cut -d' ' -f1 )
     notify-send "Enabling ${output} just cuz"
+    xrandr --output ${output} --off
+    sleep 1
     xrandr --output ${output} --auto
     xrandr --dpi 141
     exit 0
@@ -25,6 +27,12 @@ while IFS= read -r output_info ; do
     fi
 done < <( eval ${connected_displays} )
 
+if [[ "${next_output}" == "DP1-2" ]] ; then
+    conf="--mode 3840x2160 --rate 29.98"
+else
+    conf="--auto"
+fi
+
 notify-send "Cycling from ${current_output} to ${next_output}"
-xrandr --output ${next_output} --auto && xrandr --output ${current_output} --off
+xrandr --output ${next_output} ${conf} && xrandr --output ${current_output} --off
 xrandr --dpi 141

@@ -2,12 +2,12 @@ set nocompatible "allows for backwards imcompatible changes to be in effect
 set backspace=indent,eol,start
 
 " Better modes.  Remeber where we are
-set viminfo=!,'100,\"100,:20,<50,s10,h,n~/.viminfo
+set viminfo=!,'1000,<1000,h,n~/.viminfo,s1000
 
 " Pathogen
 call pathogen#infect()
 
-set history=500 "remember last 500 commands
+set history=1000 "remember last 1000 commands
 
 " Enable filetype plugin
 filetype on
@@ -190,9 +190,17 @@ autocmd BufNewFile,BufRead *.supervisor setlocal ft=supervisor
 
 " bazel support
 " ----------------
-autocmd FileType bzl setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+autocmd BufNewFile,BufRead *.bzl setlocal ft=python sw=2 ts=2 sts=2
+autocmd BufNewFile,BufRead BUILD setlocal ft=python sw=2 ts=2 sts=2
 
 " Pystachio support
 " ----------------
 autocmd BufNewFile,BufRead *.pyst setlocal ft=python
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+
+" Dbxinit config support
+" ----------------------
+autocmd BufNewFile,BufRead *.dbxtr setlocal ft=python
+
+" ruby support
+" ------------
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2

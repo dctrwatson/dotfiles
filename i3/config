@@ -115,8 +115,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# restore background
-exec --no-startup-id "nitrogen --restore"
+# bind display switch function
+bindsym $mod+p exec --no-startup-id "~/bin/cycle-displays"
 
 # screen locking
 exec_always --no-startup-id "xss-lock -- i3lock -n -e -p win"
@@ -128,14 +128,14 @@ bindsym $mod+Control+l exec --no-startup-id "xautolock -locknow"
 bindsym --release $mod+Shift+Print exec --no-startup-id "scrot -s ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
 bindsym $mod+Control+Print exec --no-startup-id "scrot ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
 
-# bind display switch function
-bindsym $mod+p exec --no-startup-id "~/bin/cycle-displays"
-
 # scratchpad
 bindsym $mod+Control+space scratchpad show
 bindsym $mod+Control+Shift+space move scratchpad
 
+# restore background
+exec --no-startup-id "nitrogen --restore"
+
 # load workspaces
 exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/johnw/.i3/workspace-2.json'"
-exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/johnw/.i3/workspace-1.json'"
-exec --no-startup-id "sleep 3; conky"
+exec --no-startup-id "sleep 1; i3-msg 'workspace 1; append_layout /home/johnw/.i3/workspace-1.json'"
+exec --no-startup-id "sleep 5; conky"
