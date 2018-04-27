@@ -2,7 +2,7 @@ set nocompatible "allows for backwards imcompatible changes to be in effect
 set backspace=indent,eol,start
 
 " Better modes.  Remeber where we are
-set viminfo=!,'1000,<1000,h,n~/.viminfo,s1000
+set viminfo=!,'1000,f1,<1000,h,n~/.viminfo
 
 " Pathogen
 call pathogen#infect()
@@ -125,6 +125,8 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+" Default to 1 tab
+autocmd FileType go setlocal shiftwidth=4
 
 " Always enable rainbow parens
 au VimEnter * RainbowParenthesesToggle
@@ -191,7 +193,7 @@ autocmd BufNewFile,BufRead *.supervisor setlocal ft=supervisor
 " bazel support
 " ----------------
 autocmd BufNewFile,BufRead *.bzl setlocal ft=python sw=2 ts=2 sts=2
-autocmd BufNewFile,BufRead BUILD setlocal ft=python sw=2 ts=2 sts=2
+autocmd BufNewFile,BufRead BUILD* setlocal ft=python sw=2 ts=2 sts=2
 
 " Pystachio support
 " ----------------
@@ -204,3 +206,8 @@ autocmd BufNewFile,BufRead *.dbxtr setlocal ft=python
 " ruby support
 " ------------
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" scala support
+" -------------
+autocmd FileType scala setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufNewFile,BufRead *.scala setlocal ft=scala
