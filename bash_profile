@@ -7,7 +7,7 @@ if [ "${BASH_VERSINFO}" -ge "4" ] ; then
 fi
 
 # ENV
-export PATH="${HOME}/bin:${HOME}/.local/bin:/usr/local/sbin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
 
 ANDROD_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
