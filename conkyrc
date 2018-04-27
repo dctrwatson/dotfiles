@@ -74,15 +74,15 @@ ${font}${color grey}Status: ${alignr}${battery}
 Remaining: ${alignr}${battery_time}
 
 ${font Noto Mono:size=9:bold}${color lightgrey}TEMPERATURES ${stippled_hr}
-${font}${color grey}CPU: ${alignr}${hwmon 1 temp 1}C
-Ambient 1: ${alignr}${hwmon 2 temp 2}C
-Ambient 2: ${alignr}${hwmon 2 temp 3}C
-Other: ${alignr}${hwmon 2 temp 4}C
-WiFi: ${alignr}${hwmon 3 temp 1}C
+${font}${color grey}CPU: ${alignr}${hwmon 2 temp 1}C
+Ambient 1: ${alignr}${hwmon 3 temp 2}C
+Ambient 2: ${alignr}${hwmon 3 temp 3}C
+Other: ${alignr}${hwmon 3 temp 4}C
+WiFi: ${alignr}${hwmon 4 temp 1}C
 
 ${font Noto Mono:size=9:bold}${color lightgrey}FANS ${stippled_hr}
-${font}${color grey}CPU: ${alignr}${hwmon 2 fan 1}RPM
-GPU: ${alignr}${hwmon 2 fan 2}RPM
+${font}${color grey}CPU: ${alignr}${hwmon 3 fan 1}RPM
+GPU: ${alignr}${hwmon 3 fan 2}RPM
 
 ${font Noto Mono:size=9:bold}${color lightgrey}CPU ${stippled_hr}
 ${font}${color grey}CPU0: ${alignr}${freq 0}MHz - ${freq 4}MHz
