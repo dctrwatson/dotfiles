@@ -88,3 +88,4 @@
 
 [branch]
 	autoSetupMerge = always
+    autoSetupRebase = always
