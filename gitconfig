@@ -81,11 +81,11 @@
   path = ~/.local_gitconfig
 
 [pack]
-	window = 32
-	depth = 64
-	deltaCacheSize = 1g
-	windowMemory = 2g
+  window = 32
+  depth = 64
+  deltaCacheSize = 1g
+  windowMemory = 2g
 
 [branch]
-	autoSetupMerge = always
-    autoSetupRebase = always
+  autoSetupMerge = always
+  autoSetupRebase = always
