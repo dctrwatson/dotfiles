@@ -118,7 +118,7 @@ fi
 
 # If in tmux, make sure env is up-to-date
 if [ -n "${TMUX}" ] ; then
-    tmux_env_update='eval "$(tmux show-env -s)"'
+    tmux_env_update='eval "$(tmux show-env -s)"; printf "\033]2;\033\\"'
     # Bash >=4.4 we can pre-exec an update
     if [ "${BASH_VERSINFO[0]}" -ge "4" ] && [ "${BASH_VERSINFO[1]}" -ge "4" ] ; then
         export PS0="${tmux_env_update}; ${PS0}"

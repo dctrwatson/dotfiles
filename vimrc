@@ -83,8 +83,10 @@ set scrolloff=5
 
 " enable automatic title setting for terminals
 set title
+set t_ts=]2;
+set t_fs=\\
 let &titleold=$TERM
-set titlestring=%F
+set titlestring=%t
 
 " F2 to toggle paste-mode
 nnoremap <F2> :set invpaste paste?<CR>
