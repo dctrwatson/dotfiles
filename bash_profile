@@ -58,8 +58,7 @@ alias l="ls -CF"
 [ -r "${HOME}/.dbx_aliases" ] && source ${HOME}/.dbx_aliases
 
 # prompt
-if hash tput &>/dev/null && tput setaf 1 >& /dev/null;
-then
+if hash tput &>/dev/null && tput setaf 1 &>/dev/null ; then
   CLEAR="\[\e[0m\]"
   RED="\[\e[01;31m\]"
   CYAN="\[\e[01;36m\]"
@@ -100,9 +99,9 @@ if hash brew &>/dev/null ; then
 fi
 
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+  if [ -f /usr/share/bash-completion/bash_completion ] ; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+  elif [ -f /etc/bash_completion ] ; then
     . /etc/bash_completion
   fi
 fi
@@ -116,5 +115,16 @@ if hash java_home &>/dev/null ; then
 fi
 
 if hash keychain &>/dev/null ; then
-    eval $( keychain --eval $HOME/.ssh/id_rsa )
+    eval "$( keychain --eval $HOME/.ssh/id_rsa )"
+fi
+
+# If in tmux, make sure env is up-to-date
+if [ -n "${TMUX}" ] ; then
+    tmux_env_update='eval "$(tmux show-env -s)"'
+    # Bash >=4.4 we can pre-exec an update
+    if [ "${BASH_VERSINFO[0]}" -ge "4" ] && [ "${BASH_VERSINFO[1]}" -ge "4" ] ; then
+        export PS0="${tmux_env_update}; ${PS0}"
+    else
+        export PROMPT_COMMAND="${tmux_env_update}; ${PROMPT_COMMAND}"
+    fi
 fi
