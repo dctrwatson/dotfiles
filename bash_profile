@@ -19,7 +19,6 @@ export EDITOR="vim"
 export PAGER="less -FirSwX"
 export MANPAGER="less -FiRswX"
 
-export GREP_COLOR="1;43"
 export LESS="-iRw"
 
 hash lesspipe &>/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
@@ -69,7 +68,6 @@ if hash tput &>/dev/null && tput setaf 1 &>/dev/null ; then
   else
     PS1="${CYAN}\u@\h${BLUE} \w \$ "
   fi
-  hash dircolors &>/dev/null && eval "$(dircolors -b)"
 else
   CLEAR=""
 
