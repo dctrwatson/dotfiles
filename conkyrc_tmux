@@ -1,0 +1,25 @@
+conky.config = {
+	out_to_console = false,
+	out_to_stderr = false,
+	overwrite_file = '/dev/shm/tmux-status',
+	background = false,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	no_buffers = true,
+	pad_percents = 3,
+	short_units = true,
+	top_cpu_separate = true,
+	top_name_width = 7,
+	update_interval = 1.0,
+	uppercase = false,
+	use_spacer = 'left',
+};
+
+conky.text = [[
+CPU: ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}% \
+RAM: ${memperc}% \
+IO: ${diskio_read} ${diskio_write} \
+Net: ${downspeed ens3} ${upspeed ens3} \
+${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1} \
+${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+]];

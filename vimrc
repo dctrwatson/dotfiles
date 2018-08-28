@@ -85,7 +85,7 @@ set scrolloff=5
 set title
 set t_ts=]2;
 set t_fs=\\
-let &titleold=$TERM
+set titleold=
 set titlestring=%t
 
 " F2 to toggle paste-mode
@@ -140,6 +140,12 @@ let g:is_bash = 1
 
 " better whitespace settings
 autocmd BufWritePre * StripWhitespace
+
+"
+" Unmap > mapping for puppet
+" --------------------------
+autocmd FileType puppet iunmap <buffer> <silent> >
+autocmd FileType puppet setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " python support
 " --------------
