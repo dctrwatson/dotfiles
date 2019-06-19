@@ -54,8 +54,6 @@ alias ll="ls -ao"
 alias la="ls -A"
 alias l="ls -CF"
 
-[ -r "${HOME}/.dbx_aliases" ] && source ${HOME}/.dbx_aliases
-
 # prompt
 if hash tput &>/dev/null && tput setaf 1 &>/dev/null ; then
   CLEAR="\[\e[0m\]"
@@ -81,11 +79,8 @@ fi
 export PROMPT_DIRTRIM=4
 export PS1=${CLEAR}${PS1}${CLEAR}
 
-if hash go &>/dev/null ; then
-    export GOROOT="$( go env GOROOT )"
-    export GOPATH="${HOME}/go"
-    export PATH="${PATH}:${GOPATH}/bin"
-fi
+# Set up gcm if it's installed
+[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "${HOME}/.gvm/scripts/gvm"
 
 if hash brew &>/dev/null ; then
     if [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
@@ -125,4 +120,9 @@ if [ -n "${TMUX}" ] ; then
     else
         export PROMPT_COMMAND="${tmux_env_update}; ${PROMPT_COMMAND}"
     fi
+fi
+
+if hash kubectl &>/dev/null ; then
+    eval "$( kubectl completion bash )"
+    export KUBECONFIG=${HOME}/.kube/config:${HOME}/.kube/johnw.kubeconfig
 fi
