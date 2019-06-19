@@ -5,21 +5,13 @@
 [alias]
   st = status -sb
   co = checkout
-  msg = commit --allow-empty -m
+  ci = commit
   lol = log --pretty=format:'%Cred%h %Creset%s %Cgreen(%an)' --graph --decorate
-  unstage = reset HEAD
-  done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && rake && git push
-  up = !git fetch origin && git rebase origin/master
-  aa = add .
   new = ls-files --others --exclude-standard
   added = diff --cached --name-only
-  today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
-  plre = pull --rebase
-  ff = merge --ff-only
   newauthor = commit --amend --reset-author -C HEAD
   subtree-add = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
   subtree-pull =  "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
-
 
 [format]
   pretty = %C(magenta reverse)%h%Creset %Cgreen[%cr]%Creset (%an) %s
@@ -66,13 +58,14 @@
   autocrlf = input
 
 [push]
-  default = tracking
+  default = upstream
 
 [transfer]
   fsckobjects = true
 
 [fetch]
   fsckobjects = true
+  prune = true
 
 [receive]
   fsckobjects = true
@@ -86,6 +79,7 @@
   deltaCacheSize = 1g
   windowMemory = 2g
 
-[branch]
-  autoSetupMerge = always
-  autoSetupRebase = always
+# Disable for GitHub workflow
+#[branch]
+#  autoSetupMerge = always
+#  autoSetupRebase = always
