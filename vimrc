@@ -138,6 +138,10 @@ au Syntax * RainbowParenthesesLoadBraces
 
 let g:is_bash = 1
 
+" vim-terraform settings
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
 " better whitespace settings
 autocmd BufWritePre * StripWhitespace
 
@@ -219,3 +223,7 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 " -------------
 autocmd FileType scala setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.scala setlocal ft=scala
+
+" terraform support
+" -----------------
+autocmd FileType terraform setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
