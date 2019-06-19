@@ -3,7 +3,7 @@
 if hash brew 2>/dev/null ; then
     dh_bin="$( brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight"
 else
-    dh_bin="perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight"
+    dh_bin="/usr/share/doc/git/contrib/diff-highlight/diff-highlight"
 fi
 
 exec ${dh_bin} "${@}"
