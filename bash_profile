@@ -124,5 +124,14 @@ fi
 
 if hash kubectl &>/dev/null ; then
     eval "$( kubectl completion bash )"
-    export KUBECONFIG=${HOME}/.kube/config:${HOME}/.kube/johnw.kubeconfig
 fi
+
+if hash minikube &>/dev/null ; then
+    source <(minikube completion bash)
+fi
+
+if hash aws &>/dev/null ; then
+    complete -C '~/.local/aws/bin/aws_completer' aws
+fi
+
+source ${HOME}/.local_profile

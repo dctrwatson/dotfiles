@@ -10,7 +10,7 @@ if [ $num_connected -eq 1 ] ; then
     xrandr --output ${output} --off
     sleep 1
     xrandr --output ${output} --auto
-    xrandr --dpi 141
+    #xrandr --dpi 141
     exit 0
 fi
 
@@ -35,4 +35,4 @@ fi
 
 notify-send "Cycling from ${current_output} to ${next_output}"
 xrandr --output ${next_output} ${conf} && xrandr --output ${current_output} --off
-xrandr --dpi 141
+#xrandr --dpi 141
