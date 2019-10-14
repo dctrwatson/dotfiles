@@ -3,11 +3,12 @@ set -o notify
 
 shopt -s autocd cdspell checkjobs checkwinsize extglob histappend histreedit histverify
 if [ "${BASH_VERSINFO[0]}" -ge "4" ] ; then
-    shopt -s dirspell globstar
+    shopt -s dirspell globstar nullglob
 fi
 
 # ENV
-export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
+export GOPATH="${HOME}/go"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
 
 ANDROD_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
@@ -27,6 +28,7 @@ export HISTIGNORE="&:[bf]g:exit:reset:clear:ls:pwd:[ ]*"
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=10000
 export HISTFILESIZE=10000
+export HISTTIMEFORMAT='%F %T '
 
 export LC_CTYPE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
@@ -132,6 +134,13 @@ fi
 
 if hash aws &>/dev/null ; then
     complete -C '~/.local/aws/bin/aws_completer' aws
+fi
+
+if hash hub &>/dev/null ; then
+    eval "$(hub alias -s)"
+    if [ -f "${GOPATH}/src/github.com/github/hub/etc/hub.bash_completion.sh" ]; then
+        source "${GOPATH}/src/github.com/github/hub/etc/hub.bash_completion.sh"
+    fi
 fi
 
 source ${HOME}/.local_profile

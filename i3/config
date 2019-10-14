@@ -128,8 +128,8 @@ exec --no-startup-id "xautolock -detectsleep -time 5 -locker 'xset s activate'"
 bindsym $mod+Control+l exec --no-startup-id "xautolock -locknow"
 
 # screenshot
-bindsym --release $mod+Shift+Print exec --no-startup-id "scrot -s ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
-bindsym $mod+Control+Print exec --no-startup-id "scrot ~/Dropbox/Screenshots/Screenshot\ %Y-%m-%d\ %H.%M.%S.png"
+bindsym --release $mod+Shift+Print exec --no-startup-id "scrot -s ~/Downloads/Screenshot_%Y-%m-%d_%H.%M.%S.png"
+bindsym $mod+Control+Print exec --no-startup-id "scrot ~/Downloads/Screenshot_%Y-%m-%d_%H.%M.%S.png"
 
 # scratchpad
 bindsym $mod+Control+space scratchpad show
