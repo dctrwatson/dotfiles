@@ -118,25 +118,32 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# bind display switch function
-bindsym $mod+p exec --no-startup-id "~/bin/cycle-displays"
-
-# screen locking
-exec_always --no-startup-id "xss-lock -- i3lock -n -e -p win"
-exec --no-startup-id "xautolock -detectsleep -time 5 -locker 'xset s activate'"
-
-bindsym $mod+Control+l exec --no-startup-id "xautolock -locknow"
+# scratchpad
+bindsym $mod+Control+space scratchpad show
+bindsym $mod+Control+Shift+space move scratchpad
 
 # screenshot
 bindsym --release $mod+Shift+Print exec --no-startup-id "scrot -s ~/Downloads/Screenshot_%Y-%m-%d_%H.%M.%S.png"
 bindsym $mod+Control+Print exec --no-startup-id "scrot ~/Downloads/Screenshot_%Y-%m-%d_%H.%M.%S.png"
 
-# scratchpad
-bindsym $mod+Control+space scratchpad show
-bindsym $mod+Control+Shift+space move scratchpad
+# bind display switch function
+bindsym $mod+p exec --no-startup-id "~/bin/cycle-displays"
 
-# restore background
-#exec --no-startup-id "nitrogen --restore"
+# screen locking
+exec_always --no-startup-id "xss-lock --transfer-sleep-lock -- i3lock -n -e -p win"
+exec --no-startup-id "xautolock -corners ---- -detectsleep -time 5 -locker 'loginctl lock-session'"
+bindsym $mod+Control+l exec --no-startup-id "loginctl lock-session"
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # natural scrolling
 exec --no-startup-id synclient VertScrollDelta=-114
