@@ -227,7 +227,17 @@ autocmd BufNewFile,BufRead *.scala setlocal ft=scala
 " terraform support
 " -----------------
 autocmd FileType terraform setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufNewFile,BufRead *.hcl setlocal ft=terraform
+augroup vim.terraform.fmt
+    autocmd BufWritePre *.hcl call terraform#fmt()
+augroup END
 
 " jsonnet support
 " -----------------
 autocmd FileType jsonnet setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" Dockerfile support
+" -----------------
+autocmd FileType dockerfile setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd BufNewFile,BufRead Dockerfile* setlocal ft=dockerfile
+

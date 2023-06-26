@@ -8,9 +8,9 @@ fi
 
 # ENV
 export GOPATH="${HOME}/go"
-export PATH="${HOME}/bin:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
 
-ANDROD_SDK_BASE="${HOME}/android-sdk-macosx"
+ANDROID_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
     export PATH="${ANDROID_SDK_BASE}/platform-tools:${ANDROID_SDK_BASE}/tools:${PATH}"
 fi
@@ -26,8 +26,8 @@ hash lesspipe &>/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 
 export HISTIGNORE="&:[bf]g:exit:reset:clear:ls:pwd:[ ]*"
 export HISTCONTROL="ignoreboth:erasedups"
-export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTSIZE=
+export HISTFILESIZE=
 export HISTTIMEFORMAT='%F %T '
 
 export LC_CTYPE="en_US.UTF-8"
@@ -49,12 +49,6 @@ else
     alias ls="${ls_alias}"
 fi
 alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
-
-alias ll="ls -ao"
-alias la="ls -A"
-alias l="ls -CF"
 
 # prompt
 if hash tput &>/dev/null && tput setaf 1 &>/dev/null ; then
@@ -78,6 +72,7 @@ else
   fi
 fi
 
+export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 export PROMPT_DIRTRIM=4
 export PS1=${CLEAR}${PS1}${CLEAR}
 
@@ -136,11 +131,4 @@ if hash aws &>/dev/null ; then
     complete -C '~/.local/aws/bin/aws_completer' aws
 fi
 
-if hash hub &>/dev/null ; then
-    eval "$(hub alias -s)"
-    if [ -f "${GOPATH}/src/github.com/github/hub/etc/hub.bash_completion.sh" ]; then
-        source "${GOPATH}/src/github.com/github/hub/etc/hub.bash_completion.sh"
-    fi
-fi
-
-source ${HOME}/.local_profile
+[[ -r "${HOME}/.bash_local" ]] && source "${HOME}/.bash_local"

@@ -61,6 +61,9 @@
 [push]
   default = upstream
 
+[pull]
+  rebase = true
+
 [transfer]
   fsckobjects = true
 
@@ -84,5 +87,10 @@
 #[branch]
 #  autoSetupMerge = always
 #  autoSetupRebase = always
-[http]
-	cookiefile = /home/johnw/.gitcookies
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[merge]
+	conflictStyle = zdiff3
+[init]
+	defaultBranch = main
