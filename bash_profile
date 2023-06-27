@@ -6,9 +6,7 @@ if [ "${BASH_VERSINFO[0]}" -ge "4" ] ; then
     shopt -s dirspell globstar nullglob
 fi
 
-# ENV
-export GOPATH="${HOME}/go"
-export PATH="${HOME}/bin:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:/usr/local/sbin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:${PATH}"
 
 ANDROID_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
@@ -76,16 +74,11 @@ export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 export PROMPT_DIRTRIM=4
 export PS1=${CLEAR}${PS1}${CLEAR}
 
-# Set up gcm if it's installed
-[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "${HOME}/.gvm/scripts/gvm"
-
-if hash brew &>/dev/null ; then
-    if [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ] ; then
-        source "$(brew --prefix)/share/bash-completion/bash_completion"
-    fi
-    if [ -f "$(brew --prefix)/bin/virtualenvwrapper.sh" ] ; then
-        source "$(brew --prefix)/bin/virtualenvwrapper.sh"
-    fi
+if [ -x /opt/homebrew/bin/brew ] ; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [ -f "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion" ] ; then
+    source "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion"
+  fi
 fi
 
 if ! shopt -oq posix; then
@@ -129,6 +122,14 @@ fi
 
 if hash aws &>/dev/null ; then
     complete -C '~/.local/aws/bin/aws_completer' aws
+fi
+
+if hash rbenv &>/dev/null ; then
+    eval "$(rbenv init - bash)"
+fi
+
+if hash orb &>/dev/null ; then
+  source "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
 fi
 
 [[ -r "${HOME}/.bash_local" ]] && source "${HOME}/.bash_local"

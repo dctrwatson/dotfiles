@@ -1,0 +1,26 @@
+local Plug = vim.fn['plug#']
+vim.call('plug#begin')
+
+Plug('ntpeters/vim-better-whitespace')
+
+vim.call('plug#end')     
+
+vim.cmd[[packadd! dracula_pro]]
+vim.g.dracula_colorterm = false
+vim.cmd.colorscheme 'dracula_pro_van_helsing'
+
+vim.opt.termguicolors = true -- Enable 24-bit RGB colors
+vim.opt.number = true        -- Show line numbers
+vim.opt.showmatch = true     -- Highlight matching parenthesis
+vim.opt.swapfile = false           -- Don't use swapfile
+vim.opt.ignorecase = true          -- Search case insensitive...
+vim.opt.smartcase = true           -- ... but not it begins with upper case
+
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("data") .. "undo"
+
+vim.opt.cursorline = true
+
+vim.opt.list = true
+
+vim.opt.scrolloff = 5

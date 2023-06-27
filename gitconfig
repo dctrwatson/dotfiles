@@ -22,13 +22,8 @@
   compactionHeuristic = 1
   noprefix = true
 
-[pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
-
 [interactive]
-  diffFilter = diff-highlight
+  diffFilter = diff-so-fancy --patch
 
 [color]
   ui = auto
@@ -39,12 +34,19 @@
   remote = green
 
 [color "diff"]
-  whitespace = red reverse
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  commit = yellow
+	whitespace = red reverse
+	meta = 11
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	commit = yellow bold
+	func = 146 bold
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 
 [color "status"]
   added = yellow
@@ -57,6 +59,7 @@
 [core]
   whitespace = tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
   autocrlf = input
+  pager = "diff-so-fancy | less --tabs=4 -RFX"
 
 [push]
   default = upstream
@@ -74,23 +77,26 @@
 [receive]
   fsckobjects = true
 
-[include]
-  path = ~/.local_gitconfig
-
 [pack]
   window = 32
   depth = 64
   deltaCacheSize = 1g
   windowMemory = 2g
 
-# Disable for GitHub workflow
-#[branch]
-#  autoSetupMerge = always
-#  autoSetupRebase = always
-
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+
 [merge]
 	conflictStyle = zdiff3
+
 [init]
 	defaultBranch = main
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[include]
+  path = ~/.local_gitconfig
