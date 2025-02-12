@@ -6,15 +6,13 @@ if [ "${BASH_VERSINFO[0]}" -ge "4" ] ; then
     shopt -s dirspell globstar nullglob
 fi
 
-export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:${PATH}"
-
 ANDROID_SDK_BASE="${HOME}/android-sdk-macosx"
 if [ -d "${ANDROID_SDK_BASE}" ] ; then
     export PATH="${ANDROID_SDK_BASE}/platform-tools:${ANDROID_SDK_BASE}/tools:${PATH}"
 fi
 
 export BLOCKSIZE="k"
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less -FirSwX"
 export MANPAGER="less -FiRswX"
 
@@ -24,8 +22,8 @@ hash lesspipe &>/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 
 export HISTIGNORE="&:[bf]g:exit:reset:clear:ls:pwd:[ ]*"
 export HISTCONTROL="ignoreboth:erasedups"
-export HISTSIZE=
-export HISTFILESIZE=
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export HISTTIMEFORMAT='%F %T '
 
 export LC_CTYPE="en_US.UTF-8"
@@ -47,6 +45,10 @@ else
     alias ls="${ls_alias}"
 fi
 alias grep="grep --color=auto"
+
+if [ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ]; then
+  alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+fi
 
 # prompt
 if hash tput &>/dev/null && tput setaf 1 &>/dev/null ; then
@@ -79,6 +81,11 @@ if [ -x /opt/homebrew/bin/brew ] ; then
   if [ -f "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion" ] ; then
     source "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion"
   fi
+fi
+
+if hash nvim &>/dev/null ; then
+  alias vi=nvim
+  alias vim=nvim
 fi
 
 if ! shopt -oq posix; then
@@ -132,4 +139,19 @@ if hash orb &>/dev/null ; then
   source "${HOME}/.orbstack/shell/init.bash" 2>/dev/null || :
 fi
 
+if hash go &>/dev/null ; then
+  GOBIN="$(go env GOBIN)"
+  export PATH="${GOBIN:-$(go env GOPATH)/bin}:${PATH}"
+fi
+
+if hash direnv &>/dev/null ; then
+  eval "$(direnv hook bash)"
+fi
+
+export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:${PATH}"
+
 [[ -r "${HOME}/.bash_local" ]] && source "${HOME}/.bash_local"
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.bash 2>/dev/null || :
+. "$HOME/.cargo/env"
