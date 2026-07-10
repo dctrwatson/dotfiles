@@ -81,6 +81,9 @@ if [ -x /opt/homebrew/bin/brew ] ; then
   if [ -f "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion" ] ; then
     source "${HOMEBREW_PREFIX}/share/bash-completion/bash_completion"
   fi
+  if [ -f "${HOMEBREW_PREFIX}/etc/profile.d/bash-preexec.sh" ] ; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash-preexec.sh"
+  fi
 fi
 
 if hash nvim &>/dev/null ; then
@@ -127,9 +130,9 @@ if hash minikube &>/dev/null ; then
     source <(minikube completion bash)
 fi
 
-if hash aws &>/dev/null ; then
-    complete -C '~/.local/aws/bin/aws_completer' aws
-fi
+#if hash aws &>/dev/null ; then
+#    complete -C '~/.local/aws/bin/aws_completer' aws
+#fi
 
 if hash rbenv &>/dev/null ; then
     eval "$(rbenv init - bash)"
@@ -148,10 +151,17 @@ if hash direnv &>/dev/null ; then
   eval "$(direnv hook bash)"
 fi
 
+if hash atuin &>/dev/null ; then
+  eval "$(atuin init bash --disable-up-arrow)"
+fi
+
+if hash uv &>/dev/null ; then
+  eval "$(uv generate-shell-completion bash)"
+fi
+
 export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.poetry/bin:${HOME}/.cargo/bin:${PATH}"
 
 [[ -r "${HOME}/.bash_local" ]] && source "${HOME}/.bash_local"
 
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.bash 2>/dev/null || :
-. "$HOME/.cargo/env"
