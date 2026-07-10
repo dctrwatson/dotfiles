@@ -1,0 +1,17 @@
+update_check = false
+
+search_mode = "daemon-fuzzy"
+
+style = "compact"
+
+enter_accept = true
+
+[sync]
+# Enable sync v2 by default
+# This ensures that sync v2 is enabled for new installs only
+# In a later release it will become the default across the board
+records = true
+
+[daemon]
+enabled = true
+autostart = true
