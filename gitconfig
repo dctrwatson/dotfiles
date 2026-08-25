@@ -13,6 +13,8 @@
   subtree-add = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
   subtree-pull =  "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
 
+  prune-branches = "!f() { git fetch --prune && git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" { print $1 }' | while IFS= read -r branch; do git branch -D -- \"$branch\"; done; }; f"
+
 [format]
   pretty = %C(magenta reverse)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 
@@ -57,7 +59,7 @@
   autocorrect = 1
 
 [core]
-  whitespace = tab-in-indent,tabwidth=4,trailing-space,cr-at-eol
+  whitespace = tabwidth=4,trailing-space,cr-at-eol
   autocrlf = input
   pager = "diff-so-fancy | less --tabs=4 -RFX"
 
