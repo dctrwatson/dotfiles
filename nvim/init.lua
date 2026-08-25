@@ -68,6 +68,7 @@ require("lazy").setup({
 				"gomod",
 				"hcl",
 				"json5",
+				"jsonnet",
 				"mermaid",
 				"ruby",
 				"yaml",
