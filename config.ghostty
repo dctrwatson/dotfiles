@@ -1,0 +1,21 @@
+theme = Dracula Pro Van Helsing
+
+font-family = M+CodeLat60 Nerd Font Mono
+font-style = Medium
+font-size = 12
+
+macos-titlebar-style = tabs
+macos-option-as-alt = left
+macos-window-shadow = false
+
+mouse-hide-while-typing = true
+focus-follows-mouse = true
+
+copy-on-select = clipboard
+right-click-action = ignore
+
+scrollback-limit = 104857600
+
+shell-integration = bash
+
+keybind = global:ctrl+cmd+space=toggle_visibility
