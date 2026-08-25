@@ -10,8 +10,8 @@
   new = ls-files --others --exclude-standard
   added = diff --cached --name-only
   newauthor = commit --amend --reset-author -C HEAD
-  subtree-add = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
-  subtree-pull =  "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
+  subtree-add = "!f() { if [ \"$#\" -ne 3 ]; then echo \"usage: git subtree-add <repository> <prefix> <ref>\" >&2; return 2; fi; git subtree add --prefix=\"$2\" \"$1\" \"$3\" --squash; }; f"
+  subtree-pull = "!f() { if [ \"$#\" -ne 3 ]; then echo \"usage: git subtree-pull <repository> <prefix> <ref>\" >&2; return 2; fi; git subtree pull --prefix=\"$2\" \"$1\" \"$3\" --squash; }; f"
 
   prune-branches = "!f() { git fetch --prune && git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" { print $1 }' | while IFS= read -r branch; do git branch -D -- \"$branch\"; done; }; f"
 
@@ -19,10 +19,8 @@
   pretty = %C(magenta reverse)%h%Creset %Cgreen[%cr]%Creset (%an) %s
 
 [diff]
-  algorithm = patience
-  wordRegex = [^[:space:]]
-  compactionHeuristic = 1
-  noprefix = true
+  algorithm = histogram
+  wordRegex = [^[:space:]]+
 
 [interactive]
   diffFilter = diff-so-fancy --patch
@@ -64,26 +62,30 @@
   pager = "diff-so-fancy | less --tabs=4 -RFX"
 
 [push]
-  default = upstream
+  default = simple
+  autoSetupRemote = true
 
 [pull]
   rebase = true
+
+[rebase]
+  autoSquash = true
+  updateRefs = true
+
+[rerere]
+  enabled = true
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = -version:refname
 
 [transfer]
   fsckobjects = true
 
 [fetch]
-  fsckobjects = true
   prune = true
-
-[receive]
-  fsckobjects = true
-
-[pack]
-  window = 32
-  depth = 64
-  deltaCacheSize = 1g
-  windowMemory = 2g
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
